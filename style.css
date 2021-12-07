@@ -1,0 +1,51 @@
+body{
+    background-image: url(blackJack.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+}
+h1{
+    margin: 350px auto 100px auto;
+    text-align: center;
+    font-size: 4em;
+}
+
+h2, h3, div{
+    margin: 30px auto 30px auto;
+    width: 900px;
+
+}
+
+div{
+    margin: auto;
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input{
+    width: 200px;
+    height: 50px;
+    border-radius: 4px;
+    background-color: rgb(48, 48, 48);
+    color: goldenrod;
+}
+.btJ{
+    visibility: hidden;
+}
+#nomCarteJ{
+    color: springgreen;
+}
+#valueCarteJ{
+    color: springgreen;
+}
+#resultat{
+    color: goldenrod;
+    background-color: rgb(48, 48, 48);
+    text-align: center;
+    border-radius: 6px;
+}
+#btReset{
+    visibility: hidden;
+}
