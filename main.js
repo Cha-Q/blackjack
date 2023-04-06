@@ -84,27 +84,26 @@ asCarreau, deuxCarreau, troisCarreau, quatreCarreau, cinqCarreau, sixCarreau,
 septCarreau, huitCarreau, neufCarreau, dixCarreau, valetCarreau, dameCarreau, roiCarreau, 
 asPique, deuxPique, troisPique, quatrePique, cinqPique, sixPique, septPique,
 huitPique, neufPique, dixPique, valetPique, damePique, roiPique];
+
 /*---------------------------------------------------------
                         Fonctions
 -----------------------------------------------------------*/
 
-
-
 //fontion qui pioche les 4 cartes et stocke leur valeur dans un array
 
 function draw(){
-    arrayCard = [];
+   
     
-    for (let i = 0; i < 4; i++){
-        const rdm = Math.floor(Math.random() * jeux.length);
-        jeux.splice(rdm,1);
-        arrayCard.push(jeux[rdm]);
-    }
+
+    const rdm = Math.floor(Math.random() * (jeux.length-1));
+    jeux.splice(rdm,1);
+    arrayCard.push(jeux[rdm]);
+
     return arrayCard;
     
 }
 
-arrayCard.push(draw());
+
 
 
 // fonction affichage en cas de victoire Yay ou défaite "nooooooo"!
@@ -130,25 +129,26 @@ function victoireOP(){
 
 // event du bouton pour récupérer les cartes du joueur
 bouton[1].addEventListener("click", function() {
+    draw()
     nbClick++;
     if(nbClick == 3){
 
-        document.querySelector("#scoresJ").textContent = `scores du joueur : ${arrayCard[0][0]} `;
+        document.querySelector("#scoresJ").textContent = `scores du joueur : ${arrayCard[2][0]} `;
 
-        document.querySelector("#valueCarteJ").textContent = `valeur de la carte du joueur est de ${arrayCard[0][0]}`;
+        document.querySelector("#valueCarteJ").textContent = `valeur de la carte du joueur est de ${arrayCard[2][0]}`;
 
-        document.querySelector("#nomCarteJ").textContent = `Le joueur a pioché un  ${arrayCard[0][1]}`;
+        document.querySelector("#nomCarteJ").textContent = `Le joueur a pioché un  ${arrayCard[2][1]}`;
 
     } else if(nbClick == 4){
 
         bouton[1].setAttribute("class","btJ");
         bouton[2].setAttribute("id","reset");
 
-        document.querySelector("#scoresJ").textContent = `scores du joueur : ${arrayCard[0][0] + arrayCard[1][0]} `;
+        document.querySelector("#scoresJ").textContent = `scores du joueur : ${arrayCard[2][0] + arrayCard[3][0]} `;
 
-        document.querySelector("#valueCarteJ").textContent = `valeur de la carte du joueur est de ${arrayCard[0][0]} et ${arrayCard[1][0]}`;
+        document.querySelector("#valueCarteJ").textContent = `valeur de la carte du joueur est de ${arrayCard[2][0]} et ${arrayCard[3][0]}`;
 
-        document.querySelector("#nomCarteJ").textContent = `Le joueur a pioché un ${arrayCard[0][1]} puis un(e) ${arrayCard[1][1]}`;
+        document.querySelector("#nomCarteJ").textContent = `Le joueur a pioché un ${arrayCard[2][1]} puis un(e) ${arrayCard[3][1]}`;
         document.querySelector("#scoresJ").setAttribute("style","font-size: 3em;");
         document.querySelector("#scoresB").setAttribute("style","font-size: 3em;");
         
@@ -159,6 +159,7 @@ bouton[1].addEventListener("click", function() {
 // event du bouton pour récupérer les cartes de la banque
 
 bouton[0].addEventListener("click", function() {
+    draw()
     nbClick++;
 
     if(nbClick == 1){
@@ -170,7 +171,7 @@ bouton[0].addEventListener("click", function() {
         bouton[1].setAttribute("class","bth");
         bouton[0].setAttribute("class","btJ");
 
-        document.querySelector("#scoresB").textContent = `scores de la banque : ${arrayCard[2][0] + arrayCard[3][0]} `;
+        document.querySelector("#scoresB").textContent = `scores de la banque : ${arrayCard[0][0] + arrayCard[1][0]} `;
 
     } 
 });
@@ -188,12 +189,12 @@ bouton[2].addEventListener("click", function() {
 
 // euuuuuh .......
 
-document.addEventListener("mouseleave", function(event){
+// document.addEventListener("mouseleave", function(event){
 
-if(event.clientY <= 0 || event.clientX <= 0 || (event.clientX >= window.innerWidth || event.clientY >= window.innerHeight))
-{
+// if(event.clientY <= 0 || event.clientX <= 0 || (event.clientX >= window.innerWidth || event.clientY >= window.innerHeight))
+// {
 
-    alert("Non stp viens jouer avec nous encore un peu, tu vas surement gagner la prochaine fois, j'en suis convaincu !");
+//     alert("Non stp viens jouer avec nous encore un peu, tu vas surement gagner la prochaine fois, j'en suis convaincu !");
 
-    }
-});
+//     }
+// });
